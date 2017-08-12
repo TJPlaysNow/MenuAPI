@@ -9,11 +9,9 @@ public class PluginMain extends JavaPlugin {
 	
 	@Override
 	public void onEnable() {
-		
 	}
 	
 	@Override
 	public void onDisable() {
-		
 	}
 }
