@@ -1,0 +1,4 @@
+name: MenuAPI
+version: 1.0
+main: com.pzg.www.menuapi.main.PluginMain
+description: A simple menu api.
