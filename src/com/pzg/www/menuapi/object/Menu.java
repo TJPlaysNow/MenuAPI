@@ -8,27 +8,24 @@ import java.util.HashMap;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.Plugin;
 
-public class Menu implements Listener {
+public class Menu {
 	
 	Inventory inv;
 	HashMap<ItemStack, Item> events = new HashMap<ItemStack, Item>();
 	
-	public Menu(String name, InventoryType type, Plugin plugin) {
+	public Menu(String name, InventoryType type, MenuManager man) {
 		inv = Bukkit.createInventory(null, type, name);
-		Bukkit.getPluginManager().registerEvents(this, plugin);
+		man.addMenu(this);
 	}
 	
-	public Menu(String name, int rows, Plugin plugin) {
+	public Menu(String name, int rows, MenuManager man) {
 		inv = Bukkit.createInventory(null, rows * 9, name);
-		Bukkit.getPluginManager().registerEvents(this, plugin);
+		man.addMenu(this);
 	}
 	
 	public void setItem(int slot, ItemStack item, Item event) {
@@ -50,12 +47,9 @@ public class Menu implements Listener {
 		player.openInventory(inv);
 	}
 	
-	@EventHandler
 	public void onClick(InventoryClickEvent event) {
-		if (event.getCurrentItem() != null || event.getCurrentItem().getType() == Material.AIR) {
-			if (event.getInventory().getName().equalsIgnoreCase(inv.getName())) {
-				if (events.containsKey(event.getCurrentItem())) events.get(event.getCurrentItem()).clickEvent(event);
-			}
+		if (event.getCurrentItem() != null || event.getCurrentItem().getType() != Material.AIR) {
+			if (events.containsKey(event.getCurrentItem())) events.get(event.getCurrentItem()).clickEvent(event);
 		}
 	}
 }
