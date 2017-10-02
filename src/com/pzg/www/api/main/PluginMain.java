@@ -1,7 +1,7 @@
 /*      This is a free resource      */
 /*  Please give credit to TJPlaysNow */
 /*     Do not delete this header     */
-package com.pzg.www.menuapi.main;
+package com.pzg.www.api.main;
 
 import org.bukkit.plugin.java.JavaPlugin;
 

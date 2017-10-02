@@ -1,7 +1,7 @@
 /*      This is a free resource      */
 /*  Please give credit to TJPlaysNow */
 /*     Do not delete this header     */
-package com.pzg.www.menuapi.object;
+package com.pzg.www.api.menu;
 
 import java.util.ArrayList;
 import java.util.List;
